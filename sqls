@@ -22,6 +22,8 @@ order by b.duration desc
 limit 3
 
 ------------------------------------------------------------------Q2-------------------------------------------------------
+/*First calculating the numenator, then the denominator*/
+
 select count(distinct a.user_id) * 100/count(distinct b.user_id) as percentage_of_mixes from 
   (select p.user_id, c.playlist_id, sum(c.track_duration) from playlists p 
 
