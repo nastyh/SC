@@ -1,0 +1,41 @@
+--------------------------------------------------------------Q1-------------------------------------------------------------
+-- Most listened playlists by the number of plays
+
+select playlist_id, count(playlist_id) as playlist_count from plays
+where user_id = 'User_X'
+group by user_id, playlist_id  
+order by count(playlist_id) desc
+limit 3
+
+
+-- Most listened playlists by overall duration
+
+
+select b.playlist_id from 
+
+ (select user_id, playlist_id, sum(listening_duration) as duration from plays
+  group by user_id, playlist_id ) b
+
+where b.user_id = 'User_X'
+group by b.playlist_id
+order by b.duration desc
+limit 3
+
+------------------------------------------------------------------Q2-------------------------------------------------------
+select count(distinct a.user_id) * 100/count(distinct b.user_id) as percentage_of_mixes from 
+  (select p.user_id, c.playlist_id, sum(c.track_duration) from playlists p 
+
+     join 
+      (select playlist_id, track_id, track_duration from listings
+       having track_duration > 600000 ) c            -- or we can write floor(track_duration/(1000*60)%60) >= 10
+     on p.playlist_id = c.playlist_id
+group by p.user_id, c.playlist_id) a,
+
+  
+  (select p.user_id, c.playlist_id, sum(c.track_duration) from playlists p 
+
+     join 
+      (select playlist_id, track_id, track_duration from listings
+                                      ) c
+     on p.playlist_id = c.playlist_id
+   group by p.user_id, c.playlist_id ) b 
