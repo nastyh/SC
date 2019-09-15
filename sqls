@@ -39,3 +39,49 @@ group by p.user_id, c.playlist_id) a,
                                       ) c
      on p.playlist_id = c.playlist_id
    group by p.user_id, c.playlist_id ) b 
+
+
+
+------------------------------------------------------------------Q3----------------------------------------------------------
+
+/*
+We need to define first what "would like" means in the context of these three tables. I suggest calculating a song "rating," which is
+listening_duration divided by track_duration. The higher the better. It can be rolled up to a playlist level by averaging. Then we can count the
+number of playlists played by every user. We want to recommend playlists with the highest rating and with the zero playcount to User_X.
+Let's write to similar chunks of code: once for everyone except User_X, then only for him/her. We will unionize the results. From the combined
+version, we'll do a full join on playlist_id where playlist_count for User_X = zero. Then we will order by rating from the table for all users
+except User_X and limit to 5.
+*/
+
+
+
+select n.playlist_id from 
+
+(select c.user_id, b.playlist_id,  
+       count(b.playlist_id) as playlist_count,
+       avg(c.listening_duration/b.track_duration) as playlist_rating
+       
+ from plays c
+ join listings b on b.track_id = c.track_id
+  where c.user_id <> 'User_X'
+ group by c.user_id,b.playlist_id
+ order by count(b.playlist_id), avg(c.listening_duration/b.track_duration) desc) m
+
+
+full inner join
+
+
+(select c.user_id, b.playlist_id,
+       count(b.playlist_id) as playlist_count,
+       avg(c.listening_duration/b.track_duration) as playlist_rating
+       
+from plays c
+ join listings b on b.track_id = c.track_id
+  where c.user_id = 'User_X'
+ group by c.user_id,b.playlist_id
+ order by count(b.playlist_id), avg(c.listening_duration/b.track_duration) desc) n 
+ 
+   on m.playlist_id = n.playlist_id
+
+order by m.playlist_rating desc
+limit 5 

@@ -1,0 +1,26 @@
+CREATE TABLE plays(
+   time_played        DATE  NOT NULL 
+  ,user_id            VARCHAR(6) NOT NULL
+  ,track_id           VARCHAR(9) NOT NULL
+  ,playlist_id        VARCHAR(11) NOT NULL
+  ,listening_duration INTEGER  NOT NULL
+);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('11/11/2018','User_A','Track_22','Playlist_5',4545456);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('1/1/2018','User_A','Track_61','Playlist_55',4243);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('8/2/2018','User_B','Track_77','Playlist_11',8787);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('10/9/2018','User_C','Track_32','Playlist_9',11);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('2/28/2018','User_C','Track_11','Playlist_21',5474);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('3/3/2019','User_X','Track_76','Playlist_14',89);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('6/6/2019','User_X','Track_10','Playlist_95',654);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('1/10/2019','User_X','Track_63','Playlist_14',8833);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('10/9/2018','User_X','Track_101','Playlist_14',8321);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('10/9/2018','User_X','Track_80','Playlist_95',6713);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('10/9/2018','User_X','Track_89','Playlist_55',6220);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('10/9/2018','User_X','Track_85','Playlist_5',7206);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('1/1/2018','User_X','Track_88','Playlist_99',3993);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('1/1/2018','User_X','Track_88','Playlist_14',6103);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('6/6/2019','User_X','Track_99','Playlist_14',4578);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('6/6/2019','User_X','Track_107','Playlist_14',9233);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('6/6/2019','User_X','Track_87','Playlist_95',4101);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('6/6/2019','User_X','Track_99','Playlist_95',3943);
+INSERT INTO plays(time_played,user_id,track_id,playlist_id,listening_duration) VALUES ('4/4/2019','User_X','Track_88','Playlist_5',6315);
